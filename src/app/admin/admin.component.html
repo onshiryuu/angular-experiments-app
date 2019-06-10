@@ -1,11 +1,11 @@
-<h2 *ngIf="authService.isLoggedIn() && authService.currentUser.name" class="userwelcome mb-3">
-  <span *ngIf="authService.currentUser.avatar" class="image roundimage avatar mr-3"><img src="assets/img/users/avatars/{{ authService.currentUser.avatar }}"/></span>
-  <span *ngIf="authService.currentUser.lang == 'de'">Wilkommen, Administrator&nbsp;</span>
-  <span *ngIf="authService.currentUser.lang == 'jp'">ようこそ、管理者&nbsp;</span>
-  <span *ngIf="authService.currentUser.lang == 'de' && authService.currentUser.gender == 0 ">Herr&nbsp;</span>
-  <span *ngIf="authService.currentUser.lang == 'de' && authService.currentUser.gender == 1 ">Frau&nbsp;</span>
-  {{ authService.currentUser.name }}
-  <span *ngIf="authService.currentUser.lang == 'jp'">&nbsp;さま</span>
+<h2 *ngIf="authservice.isLoggedIn() && authservice.currentUser.name" class="userwelcome mb-3">
+  <span *ngIf="authservice.currentUser.avatar" class="image roundimage avatar mr-3"><img src="assets/img/users/avatars/{{ authservice.currentUser.avatar }}"/></span>
+  <span *ngIf="authservice.currentUser.lang == 'de'">Wilkommen, Administrator&nbsp;</span>
+  <span *ngIf="authservice.currentUser.lang == 'jp'">ようこそ、管理者&nbsp;</span>
+  <span *ngIf="authservice.currentUser.lang == 'de' && authservice.currentUser.gender == 0 ">Herr&nbsp;</span>
+  <span *ngIf="authservice.currentUser.lang == 'de' && authservice.currentUser.gender == 1 ">Frau&nbsp;</span>
+  {{ authservice.currentUser.name }}
+  <span *ngIf="authservice.currentUser.lang == 'jp'">&nbsp;さま</span>
 </h2>
 
 <h3>Aufträge | ご注文</h3>

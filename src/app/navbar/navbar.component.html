@@ -18,7 +18,7 @@ class="navbar navbar-expand-lg navbar-light mb-5">
         <a class="nav-link" routerLink="/archive"><b>Archiv</b><br>アーカイブ</a>
       </li>
       <li class="nav-item" routerLinkActive="active current">
-        <a *ngIf="authService.isLoggedIn() && authService.currentUser.admin" class="nav-link" routerLink="/admin"><b>Administrator</b><br>管理者</a>
+        <a *ngIf="authservice.isLoggedIn() && authservice.currentUser.admin" class="nav-link" routerLink="/admin"><b>Administrator</b><br>管理者</a>
       </li>
 
       <li class="nav-item" routerLinkActive="active current">
@@ -32,8 +32,8 @@ class="navbar navbar-expand-lg navbar-light mb-5">
       </li>
     </ul>
     <span class="btn-group">
-      <a *ngIf="!authService.isLoggedIn()" class="btn btn-success" routerLink="/login">Einloggen | ログイン</a>
-      <a *ngIf="authService.isLoggedIn()" class="btn btn-primary" (click)="authService.logout()">Ausloggen | ログアウト</a>
+      <a *ngIf="!authservice.isLoggedIn()" class="btn btn-success" routerLink="/login">Einloggen | ログイン</a>
+      <a *ngIf="authservice.isLoggedIn()" class="btn btn-primary" (click)="authservice.logout()">Ausloggen | ログアウト</a>
     </span>
   </div>
 </nav>

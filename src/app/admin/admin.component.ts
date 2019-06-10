@@ -16,4 +16,8 @@ export class AdminComponent implements OnInit {
     this.orderService.getOrders()
       .subscribe(orders => this.orders = orders);
   }
+
+  get authservice() {
+    return this.authService;
+  }
 }
