@@ -1,0 +1,51 @@
+<form [formGroup]="form" #f="ngForm" (ngSubmit)=login() class="mb-5">
+    <h3>Anmeldung | ログイン</h3>
+  <div class="form-group">
+    <label for="username">Nutzername | ユーザー名</label>
+    <input
+      type="text"
+      formControlName="username"
+      id="username"
+      class="form-control">
+    <div
+        class="alert alert-danger"
+        *ngIf="username.touched && !username.valid && username.errors">
+        <div *ngIf="username.errors.required">
+          Nutzername ist erforderlich (ユーザー名は必須)
+        </div>
+        <div *ngIf="username.errors.minlength">
+          Die Nutzername muss mindestens {{ username.errors.minlength.requiredLength }} Zeichen lang sein
+          (ユーザー名は{{ username.errors.minlength.requiredLength }}文字以上でなければなりません)
+          - {{ username.errors.minlength.actualLength }}/{{ username.errors.minlength.requiredLength }}
+        </div>
+        <div *ngIf="username.errors.cannotContainSpace">
+          Der Benutzername darf keine Sonderzeichen enthalten (ユーザー名に特殊文字を含めることはできません)
+        </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Passwort | パスワード</label>
+    <input
+      type="text"
+      formControlName="password"
+      id="password"
+      class="form-control">
+    <div
+        class="alert alert-danger"
+        *ngIf="password.touched && !password.valid">
+        <div *ngIf="password.errors.required">
+          Passwort ist erforderlich (パスワードは必須)
+        </div>
+    </div>
+  </div>
+  <div
+      class="alert alert-danger"
+      *ngIf="form.errors">
+      Benutzername oder Passwort ist falsch (ユーザー名かパスワードが間違っています)
+  </div>
+  <div class="highlight">
+      <pre>{{ f.value | json }}</pre>
+      <pre>{{ username.errors | json }}</pre>
+  </div>
+  <button class="btn btn-primary" type="submit">Registrieren | 登録</button>
+</form>

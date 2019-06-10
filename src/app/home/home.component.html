@@ -1,0 +1,38 @@
+<h2 *ngIf="authService.isLoggedIn() && authService.currentUser.name" class="userwelcome mb-3">
+  <span *ngIf="authService.currentUser.avatar" class="image roundimage avatar mr-3"><img src="assets/img/users/avatars/{{ authService.currentUser.avatar }}"/></span>
+    <span *ngIf="authService.currentUser.lang == 'de'">Wilkommen,&nbsp;</span>
+    <span *ngIf="authService.currentUser.lang == 'jp'">ようこそ、&nbsp;</span>
+    <span *ngIf="authService.currentUser.lang == 'de' && authService.currentUser.gender == 0 ">Herr&nbsp;</span>
+    <span *ngIf="authService.currentUser.lang == 'de' && authService.currentUser.gender == 1 ">Frau&nbsp;</span>
+    {{ authService.currentUser.name }}
+    <span *ngIf="authService.currentUser.lang == 'jp'">&nbsp;さま</span>
+</h2>
+<hr>
+<app-ingenieur></app-ingenieur>
+<hr>
+<app-contactform></app-contactform>
+<hr>
+<accordion title="日本語">
+  <b>古池や</b><br>
+  ふるいけや<br>
+  <br>
+  <b>蛙飛び込む</b><br>
+  かわずとびこむ<br>
+  <br>
+  <b>水の音</b><br>
+  みずのおと<br>
+</accordion>
+<accordion title="Deutsch">
+  <b>Uralter Teich.</b><br>
+  Der alte Weiher:<br>
+  <br>
+  <b>Ein Frosch springt hinein.</b><br>
+  Ein Frosch springt hinein.<br>
+  <br>
+  <b>Plop.</b><br>
+  Oh! Das Geräusch des Wassers.
+</accordion>
+<app-registerform></app-registerform>
+<app-loginform></app-loginform>
+<app-expertiseform></app-expertiseform>
+<app-changepasswordform></app-changepasswordform>

@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+.form-control.ng-invalid.ng-touched {
+    border: solid 2px #EE4411;
+    box-shadow: 0 0 2px #FF7744;
+}
+
+.highlight {
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: #f7f7f9;
+}
+
+.userwelcome {
+    height: 60px;
+    line-height: 60px;
+    display: flex;
+    vertical-align: middle;
+}
+
+.image {
+    display: inline-block;
+}
+
+.userwelcome .image.avatar {
+    max-width: 60px;
+    max-height: 60px;
+}
+
+.image img {
+    max-width: 100%;
+}
+
+.userwelcome .image.avatar img {
+    vertical-align: top;
+}
+
+.image.roundimage {
+    border-radius: 10000px;
+    overflow: hidden;
+}
+
+.btn-primary {
+    color: #FFFFFF !important;
+}

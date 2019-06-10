@@ -1,0 +1,19 @@
+<h2 class="mt-5 mb-3">
+  Archive
+</h2>
+
+<ul class="list-group">
+  <li
+    class="list-group-item"
+    *ngFor="let archiveitem of archive"
+  >
+    <a [routerLink]="['/archive', archiveitem.year, archiveitem.month]" class="row">
+      <div class="col col-1">
+        <span>{{ archiveitem.id }}</span>
+      </div>
+      <div class="col col-11">
+        <h4>{{ archiveitem.year }}/{{ archiveitem.month }}</h4>
+      </div>
+    </a>
+  </li>
+</ul>

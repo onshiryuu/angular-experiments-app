@@ -1,0 +1,47 @@
+<div class="form-group">
+    <h3>Ihr Name?</h3>
+    <input class="form-control" type="text" [(ngModel)]="username" (keyup.enter)="onEnter()" [appInputFormat]="'uppercase'" />
+</div>
+<div *ngIf="username != ''">
+    <h3>Bier oder Root Beer?</h3>
+    <ul class="nav nav-pills mb-4">
+        <li class="nav-item"><a href="#" class="nav-link" [class.active]="bieroderrootbeer == 'bier'" (click)="bieroderrootbeer = 'bier'">Bier</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" [class.active]="bieroderrootbeer == 'rootbeer'" (click)="bieroderrootbeer = 'rootbeer'">Root Beer</a></li>
+    </ul>
+    <div [ngSwitch]="bieroderrootbeer">
+        <div *ngSwitchCase="'bier'" class="form-group">
+            <p>Bier ist GUT!</p>
+            <button class="btn"
+                (click)="onClick()"
+                [ngClass]="{
+                    'btn-secondary' : !isActive,
+                    'btn-primary' : isActive
+                }">
+                {{ beerbtntxt }}
+            </button>
+            <span>{{ beercount }}</span>
+        </div>
+        <div *ngSwitchCase="'rootbeer'" class="form-group">
+            <p>Root Beer ist SEHR GUT!</p>
+            <button class="btn"
+                (click)="onClickRB()"
+                [ngClass]="{
+                    'btn-secondary' : !isActiveRB,
+                    'btn-primary' : isActiveRB
+                }">
+                {{ rbbtntxt }}
+            </button>
+            <span>{{ rbcount }}</span>
+        </div>
+        <div *ngSwitchDefault class="form-group">
+            <p>Wir akzeptieren nur Bier und Root Beer</p>
+        </div>
+        <p>{{ message }}</p>
+    </div>
+</div>
+
+<div *ngIf="bieroderrootbeer == 'rootbeer'" class="form-group">
+    <h3>Dein Lieblingsfilm?</h3>
+    <input class="form-control" type="text" [(ngModel)]="movie" (keyup.enter)="onEnterMovie()" />
+    <p>{{ movie | customtitlecase }}</p>
+</div>

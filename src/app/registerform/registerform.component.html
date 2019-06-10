@@ -1,0 +1,115 @@
+<form [formGroup]="form" #f="ngForm" class="mb-5">
+  <h3>Registrieren | 登録</h3>
+  <div class="form-group">
+    <label for="username">Nutzername | ユーザー名</label>
+    <input
+      type="text"
+      formControlName="username"
+      id="username"
+      class="form-control">
+    <div *ngIf="username.pending">
+      Nutzername überprüfen　| ユーザー名を確認する　•　•　•
+    </div>
+    <div
+        class="alert alert-danger"
+        *ngIf="username.touched && !username.valid && username.errors">
+      <div *ngIf="username.errors.required">
+        Nutzername ist erforderlich (ユーザー名は必須)
+      </div>
+      <div *ngIf="username.errors.minlength">
+        Die Nutzername muss mindestens {{ username.errors.minlength.requiredLength }} Zeichen lang sein
+        (ユーザー名は{{ username.errors.minlength.requiredLength }}文字以上でなければなりません)
+        - {{ username.errors.minlength.actualLength }}/{{ username.errors.minlength.requiredLength }}
+      </div>
+      <div *ngIf="username.errors.cannotContainSpace">
+        Der Benutzername darf keine Sonderzeichen enthalten (ユーザー名に特殊文字を含めることはできません)
+      </div>
+      <div *ngIf="username.errors.shouldBeUnique">
+        Der Benutzername muss eindeutig sein (ユーザー名は一意である必要があります)
+      </div>
+    </div>
+    <div class="highlight" formGroupName="address">
+      <h4>Adresse | 住所</h4>
+      <div class="form-group">
+        <label for="housenumber">Hausnummer | 家屋番号</label>
+        <input
+          type="text"
+          formControlName="housenumber"
+          id="housenumber"
+          class="form-control">
+        <div
+            class="alert alert-danger"
+            *ngIf="housenumber.touched && !housenumber.valid && housenumber.errors">
+            <div *ngIf="housenumber.errors.required">
+                Hausnummer ist erforderlich 家屋番号は必須)
+            </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="street">Straßenname | 道路名</label>
+        <input
+          type="text"
+          formControlName="street"
+          id="street"
+          class="form-control">
+        <div
+            class="alert alert-danger"
+            *ngIf="street.touched && !street.valid && street.errors">
+            <div *ngIf="street.errors.required">
+              Straßenname ist erforderlich (道路名は必須)
+            </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="city">Stadt | 都市</label>
+        <input
+          type="text"
+          formControlName="city"
+          id="city"
+          class="form-control">
+        <div
+            class="alert alert-danger"
+            *ngIf="city.touched && !city.valid && city.errors">
+            <div *ngIf="city.errors.required">
+              Stadt ist erforderlich (都市は必須)
+            </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="nation">Nation | 国家</label>
+        <input
+          type="text"
+          formControlName="nation"
+          id="nation"
+          class="form-control">
+        <div
+            class="alert alert-danger"
+            *ngIf="nation.touched && !nation.valid && nation.errors">
+            <div *ngIf="nation.errors.required">
+                Nation ist erforderlich (国家は必須)
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Passwort | パスワード</label>
+    <input
+      type="text"
+      formControlName="password"
+      id="password"
+      class="form-control">
+    <div
+        class="alert alert-danger"
+        *ngIf="password.touched && !password.valid">
+        <div *ngIf="password.errors.required">
+          Passwort ist erforderlich (パスワードは必須)
+        </div>
+    </div>
+  </div>
+  <div class="highlight">
+      <pre>{{ f.value | json }}</pre>
+      <pre>{{ username.errors | json }}</pre>
+  </div>
+  <button class="btn btn-primary" type="submit">Registrieren | 登録</button>
+</form>

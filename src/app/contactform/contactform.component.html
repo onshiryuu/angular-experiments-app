@@ -1,0 +1,115 @@
+<form #f="ngForm" (ngSubmit)="submit(f)">
+    <div ngModelGroup="contact">
+        <div class="form-group">
+            <label for="firstName"></label>
+            <input
+                required
+                ngModel
+                name="firstName"
+                #firstName="ngModel"
+                id="firstName"
+                type="text"
+                class="form-control"/>
+            <div
+                class="alert alert-danger"
+                *ngIf="firstName.touched && !firstName.valid">
+                <div *ngIf="firstName.errors.required">
+                    Vorname ist erforderlich (名は必須)
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="eMail"></label>
+            <input
+                required
+                pattern=".*@gmail.com"
+                ngModel
+                name="eMail"
+                #eMail="ngModel"
+                id="eMail"
+                type="text"
+                class="form-control"/>
+            <div
+                class="alert alert-danger"
+                *ngIf="eMail.touched && !eMail.valid">
+                <div *ngIf="eMail.errors.required">
+                    E-Mail-Addresse ist erforderlich (メールアドレスは必須)
+                </div>
+                <div *ngIf="eMail.errors.pattern">
+                    E-Mail-Addresse ist inkorrekt (メールアドレスが正しくありません)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="message"></label>
+        <textarea
+            required
+            minlength="100"
+            ngModel
+            name="message"
+            #message="ngModel"
+            id="message"
+            cols="30"
+            rows="10"
+            class="form-control">
+        </textarea>
+        <div class="alert alert-danger" *ngIf="message.touched && !message.valid">
+            <div *ngIf="message.errors.required">
+                Nachricht ist erforderlich (メッセージは必須)
+            </div>
+            <div *ngIf="message.errors.minlength">
+                Die Nachricht muss mindestens {{ message.errors.minlength.requiredLength }} Zeichen lang sein
+                (メッセージは{{ message.errors.minlength.requiredLength }}文字以上でなければなりません)
+                - {{ message.errors.minlength.actualLength }}/{{ message.errors.minlength.requiredLength }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input ngModel name="registerEngineer" class="form-check-input" type="checkbox" value="" id="registerEngineer">
+            <label class="form-check-label" for="registerEngineer">
+                Registrieren Sie sich als Ingenieur
+            </label>
+        </div>
+    </div>
+    <div class="form-group mb-4">
+        <label for="expertise">Sachverstand / 専門知識</label>
+        <select
+        required
+        multiple
+        ngModel
+        #expertise="ngModel"
+        name="expertise"
+        id="expertise"
+        class="form-control">
+            <option *ngFor="let expertise of expertises" [ngValue]="expertise">{{ expertise.name }}</option>
+        </select>
+        <div class="alert alert-danger" *ngIf="expertise.touched && !expertise.valid">
+            <div *ngIf="expertise.errors.required">
+                    Sachverstand ist erforderlich (専門知識は必須)
+            </div>
+        </div>
+    </div>
+    <div class="form-group mb-4">
+        <label>Zugriffsebene / アクセスレベル</label>
+        <div *ngFor="let accesslevel of accesslevels"
+            class="form-check">
+            <input
+                required
+                ngModel
+                class="form-check-input"
+                type="radio"
+                name="accessLevel"
+                [id]="accesslevel.id"
+                [value]="accesslevel.id">
+            <label class="form-check-label" [for]="accesslevel.id">
+                {{ accesslevel.name }}
+            </label>
+        </div>
+    </div>
+    <div class="highlight">
+        <pre>{{ f.value | json }}</pre>
+    </div>
+    <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+</form>

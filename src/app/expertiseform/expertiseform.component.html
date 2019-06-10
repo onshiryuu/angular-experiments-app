@@ -1,0 +1,19 @@
+<form class="mb-5">
+  <div class="form-group">
+    <label for="fields">Sachverstand / 専門知識</label>
+    <input
+      type="text"
+      id="fields"
+      class="form-control"
+      #field
+      (keyup.enter)="addField(field)">
+  </div>
+  <ul class="list-group">
+    <li
+      *ngFor="let field of fields.controls"
+      class="list-group-item"
+      (click)="removeField(field)">
+      {{ field.value }}
+    </li>
+  </ul>
+</form>
